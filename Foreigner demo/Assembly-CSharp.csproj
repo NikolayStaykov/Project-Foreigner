@@ -57,6 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI Scripts\MainMenuManager.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\ICubeModule.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\MainAIModule.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\ThreadModuleRight.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\ThreadModuleLeft.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\BoosterCubeModuleUP.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\BoosterCubeModuleRight.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\BoosterCubeModuleLeft.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CameraScripts\CameraFollowPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

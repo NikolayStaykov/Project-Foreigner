@@ -375,6 +375,14 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/GameplayScripts/CameraScripts/CameraFollowPlayer.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/BoosterCubeModuleLeft.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/BoosterCubeModuleRight.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/BoosterCubeModuleUP.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/ICubeModule.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/MainAIModule.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/ThreadModuleLeft.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/ThreadModuleRight.cs"
 "Assets/Scripts/UI Scripts/MainMenuManager.cs"
 -langversion:9.0
 
