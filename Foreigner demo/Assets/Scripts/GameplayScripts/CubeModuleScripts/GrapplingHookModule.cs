@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GrapplingHookModule : MonoBehaviour, ICubeModule
 {
@@ -10,6 +11,10 @@ public class GrapplingHookModule : MonoBehaviour, ICubeModule
     public Transform HookSpawnPoint;
     private GameObject _tempHook;
     private bool _cubeEnabled = true;
+    private bool _hookLaunched = false;
+    private bool _hookSecured = false;
+    private bool _actionFlag = false;
+
 
     public void DisableCubeFunction()
     {
@@ -25,31 +30,59 @@ public class GrapplingHookModule : MonoBehaviour, ICubeModule
     {
         if (_cubeEnabled)
         {
-            _cubeEnabled= false;
-            this.gameObject.GetComponent<Rigidbody2D>().simulated = true;
-            _tempHook = Instantiate(Hook, HookSpawnPoint.position, HookSpawnPoint.rotation, null);
-            _tempHook.GetComponent<GrapplingHookScript>().SetGrapplingHookModule(this);
+            if (!_hookLaunched)
+            {
+                _hookLaunched=true;
+                this.gameObject.AddComponent<Rigidbody2D>().mass = 0.001f;
+                this.gameObject.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Interpolate;
+                this.gameObject.AddComponent<FixedJoint2D>().connectedBody = this.GetComponentInParent<MainAIModule>().gameObject.GetComponent<Rigidbody2D>();
+                this.gameObject.AddComponent<SpringJoint2D>().dampingRatio = 1;
+                _tempHook = Instantiate(Hook, HookSpawnPoint.position, HookSpawnPoint.rotation, null);
+                _tempHook.GetComponent<GrapplingHookScript>().SetGrapplingHookModule(this);
+            }
+            if (_hookSecured)
+            {
+                _actionFlag= true;
+            }
         }
     }
 
     public void OnReleaseAction()
     {
-        throw new System.NotImplementedException();
+        _actionFlag= false;
     }
-    void Update()
+    void FixedUpdate()
     {
-
+        if (_actionFlag)
+        {
+            _reelInGrappleHook();
+        }
     }
+
+    private void _reelInGrappleHook()
+    {
+        if(this.TryGetComponent<SpringJoint2D>(out SpringJoint2D joint) && joint.distance > 0.005f )
+        {
+            joint.distance -= 1 * Time.deltaTime;
+        }
+    }
+
     public void HookSecured(Rigidbody2D HookBody)
     {
-        SpringJoint2D joint = this.gameObject.GetComponent<SpringJoint2D>();
+        SpringJoint2D joint = this.gameObject.GetComponentInParent<SpringJoint2D>();
         joint.enabled = true;
         joint.connectedBody = HookBody;
         joint.autoConfigureDistance = false;
+        this.GetComponent<Rigidbody2D>().mass = 1f;
+        _hookSecured = true;
     }
 
-    public void SetNumberOfModules(int NumberOfModules)
+    public void OnDoubleClickAction()
     {
-        throw new System.NotImplementedException();
+        _hookLaunched = _hookLaunched = false;
+        Destroy(this.gameObject.GetComponent<FixedJoint2D>());
+        Destroy(this.gameObject.GetComponent<SpringJoint2D>());
+        Destroy(this.gameObject.GetComponent<Rigidbody2D>());
+        Destroy(_tempHook);
     }
 }

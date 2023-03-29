@@ -42,7 +42,7 @@ public class GrapplingHookScript : MonoBehaviour
 
     public void ResetHook()
     {
-        Destroy(this.gameObject);
+        _module.OnDoubleClickAction();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

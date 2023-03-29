@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainAIModule : MonoBehaviour, ICubeModule
 {
     private bool _cubeEnabled = true;
+    private ICubeModule[] _cubeModules;
     public void DisableCubeFunction()
     {
         _cubeEnabled= false;
@@ -32,7 +33,6 @@ public class MainAIModule : MonoBehaviour, ICubeModule
     public void UpdateModules()
     {
         int numberOfModules = this.GetComponentsInChildren<ICubeModule>().Length;
-        Debug.Log(numberOfModules);
         foreach (IModuleDependent module in this.GetComponentsInChildren<IModuleDependent>())
         {
             module.CalculateWithNumberOfModules(1);

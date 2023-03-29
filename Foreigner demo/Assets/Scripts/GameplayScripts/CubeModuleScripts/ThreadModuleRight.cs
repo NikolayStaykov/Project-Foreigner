@@ -42,7 +42,7 @@ public class ThreadModuleRight : MonoBehaviour, ICubeModule, IModuleDependent
         this.gameObject.GetComponentInParent<Rigidbody2D>().velocity = new Vector2(0, this.gameObject.GetComponentInParent<Rigidbody2D>().velocity.y);
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (_actionFlag)
         {

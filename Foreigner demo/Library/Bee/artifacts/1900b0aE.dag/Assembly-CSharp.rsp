@@ -376,6 +376,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/GameplayScripts/CameraScripts/CameraFollowPlayer.cs"
+"Assets/Scripts/GameplayScripts/CubeModuleScripts/AdditionalFunctionalities/DoubleClickDetector.cs"
 "Assets/Scripts/GameplayScripts/CubeModuleScripts/BoosterModuleLeft.cs"
 "Assets/Scripts/GameplayScripts/CubeModuleScripts/BoosterModuleRight.cs"
 "Assets/Scripts/GameplayScripts/CubeModuleScripts/BoosterModuleUP.cs"
