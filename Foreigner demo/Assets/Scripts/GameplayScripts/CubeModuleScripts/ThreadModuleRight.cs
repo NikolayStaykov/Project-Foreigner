@@ -38,11 +38,11 @@ public class ThreadModuleRight : MonoBehaviour, ICubeModule, IModuleDependent
 
     public void OnReleaseAction()
     {
-        _actionFlag= false;
+        _actionFlag = false;
         this.gameObject.GetComponentInParent<Rigidbody2D>().velocity = new Vector2(0, this.gameObject.GetComponentInParent<Rigidbody2D>().velocity.y);
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         if (_actionFlag)
         {

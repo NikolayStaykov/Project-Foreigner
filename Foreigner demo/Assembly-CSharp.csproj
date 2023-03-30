@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\Interfaces\ICubeModule.cs" />
+    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\AdditionalFunctionalities\DoubleClickDetector.cs" />
     <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\MainAIModule.cs" />
     <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\BoosterModuleUP.cs" />
     <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\GrapplingHookModule.cs" />
@@ -68,7 +69,6 @@
     <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\ThreadModuleRight.cs" />
     <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\BoosterModuleLeft.cs" />
     <Compile Include="Assets\Scripts\GameplayScripts\CameraScripts\CameraFollowPlayer.cs" />
-    <Compile Include="Assets\Scripts\GameplayScripts\CubeModuleScripts\AdditionalFunctionalities\DoubleClickDetector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

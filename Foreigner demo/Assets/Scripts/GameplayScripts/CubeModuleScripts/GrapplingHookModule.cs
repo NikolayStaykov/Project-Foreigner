@@ -32,11 +32,17 @@ public class GrapplingHookModule : MonoBehaviour, ICubeModule
         {
             if (!_hookLaunched)
             {
+                float currentX = this.gameObject.transform.localPosition.x;
+                float currentY = this.gameObject.transform.localPosition.y;
                 _hookLaunched=true;
-                this.gameObject.AddComponent<Rigidbody2D>().mass = 0.001f;
-                this.gameObject.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Interpolate;
-                this.gameObject.AddComponent<FixedJoint2D>().connectedBody = this.GetComponentInParent<MainAIModule>().gameObject.GetComponent<Rigidbody2D>();
-                this.gameObject.AddComponent<SpringJoint2D>().dampingRatio = 1;
+                Rigidbody2D newBody = this.gameObject.AddComponent<Rigidbody2D>();
+                newBody.mass = 0.001f;
+                FixedJoint2D newJoint = this.gameObject.AddComponent<FixedJoint2D>();
+                newJoint.connectedBody = this.GetComponentInParent<MainAIModule>().gameObject.GetComponent<Rigidbody2D>();
+                newJoint.autoConfigureConnectedAnchor = false;
+                newJoint.connectedAnchor = new Vector2(currentX, currentY);
+                SpringJoint2D newSpringJoint = this.gameObject.AddComponent<SpringJoint2D>();
+                newSpringJoint.dampingRatio = 1;
                 _tempHook = Instantiate(Hook, HookSpawnPoint.position, HookSpawnPoint.rotation, null);
                 _tempHook.GetComponent<GrapplingHookScript>().SetGrapplingHookModule(this);
             }

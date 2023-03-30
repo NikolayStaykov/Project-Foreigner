@@ -17,7 +17,12 @@ public class BoosterModuleUP : MonoBehaviour, ICubeModule, IModuleDependent
     {
         if (_actionFlag && _cubeEnabled)
         {
-            this.gameObject.GetComponentInParent<Rigidbody2D>().AddRelativeForce(_speed, ForceMode2D.Impulse);
+            Rigidbody2D parentBody = this.gameObject.GetComponentInParent<Rigidbody2D>();
+            if (parentBody.velocity.y < 0)
+            {
+                parentBody.velocity = new Vector2(parentBody.velocity.x, 0);
+            }
+            parentBody.AddRelativeForce(_speed, ForceMode2D.Impulse);
             _actionFlag = false;
             _resetFlag();
         }
